@@ -1,0 +1,58 @@
+.system-button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 7px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+/* =========================
+   ACTIVAR
+========================= */
+
+.system-button.activar {
+    background-color: #198754;
+}
+
+.system-button.activar:hover {
+    background-color: #146c43;
+}
+
+
+/* =========================
+   DESACTIVAR
+========================= */
+
+.system-button.desactivar {
+    background-color: #dc3545;
+}
+
+.system-button.desactivar:hover {
+    background-color: #bb2d3b;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+.system-button.reset {
+    background-color: #6c757d;
+}
+
+.system-button.reset:hover {
+    background-color: #495057;
+}
+
+
+/* =========================
+   CLICK
+=========================

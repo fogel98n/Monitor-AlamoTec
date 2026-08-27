@@ -1,0 +1,16 @@
+/* Reset global mínimo — poner en index.css o App.css (se carga UNA vez, no por componente) */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+* {
+  box-sizing: border-box;
+}
