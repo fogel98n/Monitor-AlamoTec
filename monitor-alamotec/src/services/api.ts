@@ -7,15 +7,17 @@ export async function login(username: string, password: string) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username,
-      password,
+      correo: username,
+      password: password,
     }),
   });
 
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.mensaje || "Usuario o contraseña incorrectos");
+    throw new Error(
+      data.mensaje || "Usuario o contraseña incorrectos"
+    );
   }
 
   return data;
