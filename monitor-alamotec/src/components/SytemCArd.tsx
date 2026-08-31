@@ -1,62 +1,39 @@
 import "../styles/SystemCard.css"
 import SystemButton from "./boton";
-interface system{
-    id:number
-    name:string;
-    description:string;
-    status:"activo"|"inactivo";
+import { GetCrontaskFernandoorellana,type CronTaskFernandoorellana } from "../services/cron_task_fernandoorellana";
+
+interface systemCardProps{
+    task:CronTaskFernandoorellana
 }
 
-export const systems:system[]=[
-     {
-    id: 1,
-    name: "Vtiger",
-    description: "Sistema de gestión CRM",
-    status: "activo",
-  },
-  {
-    id: 2,
-    name: "Sistema de Ventas",
-    description: "Gestión y seguimiento de ventas",
-    status: "activo",
-  },
-  {
-    id: 3,
-    name: "Recursos Humanos",
-    description: "Gestión de empleados",
-    status: "activo",
-  },
-  {
-    id: 4,
-    name: "Sistema de Inventario",
-    description: "Control de productos e inventario",
-    status: "inactivo",
-  },
-]
+function SystemCard({task}:systemCardProps){
+    const isActivo = task.status === 1;
+    const statusText = isActivo ? "activo" : "inactivo";
 
-interface systemcardprops{
-    system:system
-}
+    const formatValue = (val: string | number | null) => val ?? "N/A";
 
-function Systemcard({system
-}:systemcardprops){
-    const statusClass={
-        activo:"activo",
-        inactivo:"inactivo"
-    }
-    return(<div className="system-card">
-        <div className="system-info">
-            <h3>{system.name}</h3>
+    return (
+        <div className="system-card">
+            <div className="system-info">
+                <h3>{task.name}</h3>
+                <div className="system-details">
+                    <p><strong>Frecuencia:</strong> {task.frequency} segundos</p>
+                    <p><strong>Último Inicio:</strong> {formatValue(task.laststart)}</p>
+                    <p><strong>Último Fin:</strong> {formatValue(task.lastend)}</p>
+                    <p><strong>Duración:</strong> {task.duracion_segundos !== null ? `${task.duracion_segundos} seg` : "N/A"}</p>
+                </div>
+            </div>
+
+            <div className="system-rigth">
+                <span className={`system-status ${statusText}`}>
+                    <span className="status-dot"></span>
+                    {statusText}
+                </span>
+                <SystemButton type="activado" />
+                <SystemButton type="reset" />
+            </div>
         </div>
-        <div className="system-rigth">
-            <span className={`system-status ${statusClass[system.status]}`}>
-                <span className="status-dot"></span>
-                {system.status}
-            </span>
-            <SystemButton type="activado"/>
-            <SystemButton type="reset"/>
-        </div>
-    </div>)
+    )
 }
 
-export default Systemcard
+export default SystemCard;
