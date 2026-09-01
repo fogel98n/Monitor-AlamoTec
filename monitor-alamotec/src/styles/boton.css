@@ -1,58 +1,36 @@
 .system-button {
-    padding: 8px 18px;
-    border: none;
-    border-radius: 7px;
-
-    color: #ffffff;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: all 0.2s ease;
+  flex: 1;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
 }
 
-
-/* =========================
-   ACTIVAR
-========================= */
+.system-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 .system-button.activar {
-    background-color: #198754;
+  background: #1f9d55;
+  color: #ffffff;
 }
-
-.system-button.activar:hover {
-    background-color: #146c43;
-}
-
-
-/* =========================
-   DESACTIVAR
-========================= */
 
 .system-button.desactivar {
-    background-color: #dc3545;
+  background: #dc4c4c;
+  color: #ffffff;
 }
-
-.system-button.desactivar:hover {
-    background-color: #bb2d3b;
-}
-
-
-/* =========================
-   RESET
-========================= */
 
 .system-button.reset {
-    background-color: #6c757d;
+  background: #eef1f5;
+  color: #1c2536;
 }
 
-.system-button.reset:hover {
-    background-color: #495057;
+.system-button:focus-visible {
+  outline: 2px solid #3454d1;
+  outline-offset: 2px;
 }
-
-
-/* =========================
-   CLICK
-=========================

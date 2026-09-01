@@ -1,0 +1,17 @@
+/* Reset global: se carga UNA sola vez desde main.tsx, aplica a toda la app */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #0f1512;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+* {
+  box-sizing: border-box;
+}
