@@ -3,8 +3,8 @@ export interface CronTaskFernandoorellana {
   name: string;
   status: number;
   frequency: number;
-  laststart: string | null;
-  lastend: string | null;
+  laststart: number | null;
+  lastend: number | null;
   duracion_segundos: number | null;
 }
 

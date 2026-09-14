@@ -33,14 +33,16 @@ function ordenarModulos(nombres: string[]): string[] {
   });
 }
 
-function formatRelativo(fecha: string | null): string {
-  if (!fecha) return "N/A";
-  const diffMs = Date.now() - new Date(fecha).getTime();
-  if (diffMs < 0) return "N/A";
+function formatRelativo(timestampUnix: number | null): string {
+  if (!timestampUnix) return "N/A";
+  const diffMs = Date.now() - timestampUnix * 1000;
+  if (diffMs < 0) return "hace instantes";
+
   const min = Math.floor(diffMs / 60000);
   const horas = Math.floor(min / 60);
   const dias = Math.floor(horas / 24);
   const meses = Math.floor(dias / 30);
+
   if (meses >= 1) return `hace ${meses} mes${meses > 1 ? "es" : ""}`;
   if (dias >= 1) return `hace ${dias} d`;
   if (horas >= 1) return `hace ${horas} h`;
@@ -286,12 +288,14 @@ function SystemCard({ sistemas, onTaskUpdated, onEditar }: SystemCardProps) {
 
                     const isActivo = task.status === 1;
                     const isCaido = task.status === 2;
-                    const statusText = isCaido ? "detenido" : isActivo ? "activo" : "inactivo";
+                    const statusText = isCaido ? "en-ejecucion" : isActivo ? "activo" : "inactivo";
 
                     return (
                       <>
                         <td className="col-sub" key={`${task.id}-estado`}>
-                          <span className={`pill pill-${statusText}`}>{statusText}</span>
+                          <span className={`pill pill-${statusText}`}>
+                            {statusText === "en-ejecucion" ? "En ejecución" : statusText}
+                          </span>
                         </td>
                         <td className="col-sub" key={`${task.id}-dur`}>
                           <div className="ultima-dur">
