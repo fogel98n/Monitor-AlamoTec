@@ -196,7 +196,7 @@ function SystemCard({ sistemas, onTaskUpdated, onEditar }: SystemCardProps) {
           <span className="badge badge-info">{sistemas.length} sistemas</span>
           {totalAtrasadas > 0 && (
             <span className="badge badge-warning">
-              {totalAtrasadas} atrasada{totalAtrasadas > 1 ? "s" : ""}
+              {totalAtrasadas} en ejecucion{totalAtrasadas > 1 ? "" : ""}
             </span>
           )}
         </div>
