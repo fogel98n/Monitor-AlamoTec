@@ -11,9 +11,16 @@ export interface CronTaskFernandoorellana {
 export interface Sistema {
   id: number;
   nombre: string;
+  host: string;
+  usuario: string;
+  password: string;
   base_datos: string;
+  puerto: number;
   orden: number;
+  script_reset?: string | null;
 }
+
+export interface SistemaDetalle extends Sistema {}
 
 const API_URL = "/api";
 
@@ -22,6 +29,13 @@ export async function getSistemas(): Promise<Sistema[]> {
   const data = await response.json();
   if (!response.ok) throw new Error(data.mensaje || "Error al obtener sistemas");
   return data.sistemas;
+}
+
+export async function getSistemaById(id: number): Promise<SistemaDetalle> {
+  const response = await fetch(`${API_URL}/sistemas/${id}`, { cache: "no-store" });
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.mensaje || "Error al obtener el sistema");
+  return data.sistema;
 }
 
 export async function getCronTasksBySistema(sistemaId: number) {
@@ -84,6 +98,7 @@ export async function actualizarSistema(
     base_datos: string;
     puerto: number;
     orden: number;
+    script_reset: string | null;
   }>
 ) {
   const response = await fetch(`${API_URL}/sistemas/${id}`, {
@@ -100,5 +115,26 @@ export async function eliminarSistema(id: number) {
   const response = await fetch(`${API_URL}/sistemas/${id}`, { method: "DELETE" });
   const data = await response.json();
   if (!response.ok) throw new Error(data.mensaje || "Error al eliminar el sistema");
+  return data;
+}
+
+export async function moverSistema(
+  id: number,
+  direccion: "arriba" | "abajo"
+) {
+  const response = await fetch(`${API_URL}/sistemas/${id}/mover`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ direccion }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.mensaje || "Error al mover el sistema");
+  }
+
   return data;
 }
