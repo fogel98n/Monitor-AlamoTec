@@ -11,12 +11,14 @@ function AgregarSistemaModal({ onClose, onCreated, sistemaExistente }: AgregarSi
   const esEdicion = !!sistemaExistente;
 
   const [form, setForm] = useState({
-    nombre: sistemaExistente?.nombre || "",
-    host: "",
-    usuario: "",
-    password: "",
-    base_datos: sistemaExistente?.base_datos || "",
-    puerto: 3306,
+nombre: sistemaExistente?.nombre || "",
+  host: sistemaExistente?.host || "",
+  usuario: sistemaExistente?.usuario || "",
+  password: sistemaExistente?.password || "",
+  base_datos: sistemaExistente?.base_datos || "",
+  puerto: sistemaExistente?.puerto || 3306,
+  orden: sistemaExistente?.orden || 0,
+  script_reset: sistemaExistente?.script_reset || "",
   });
   const [error, setError] = useState<string | null>(null);
   const [guardando, setGuardando] = useState(false);

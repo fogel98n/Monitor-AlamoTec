@@ -31,8 +31,8 @@
 }
 
 .badge-warning {
-  background: rgba(248, 113, 113, 0.14);
-  color: #f87171;
+  background: rgba(232, 184, 11, 0.14);
+  color: #f3ce13;
 }
 
 .topbar-updated {
@@ -110,6 +110,15 @@
 }
 
 .pill-detenido {
+  background: rgba(206, 123, 7, 0.14);
+  color: #e47a09;
+}
+.pill-en-ejecucion {
+  background: rgba(251, 146, 60, 0.14);
+  color: #fb923c;
+}
+
+.pill-en-ejecucion-rojo {
   background: rgba(248, 113, 113, 0.14);
   color: #f87171;
 }
@@ -159,7 +168,7 @@
   cursor: not-allowed;
 }
 
-.icon-btn-pause { color: #f87171; }
+.icon-btn-pause { color: #edaa17; }
 .icon-btn-play { color: #34d399; }
 .icon-btn-refresh { color: #9aa39d; }
 
@@ -204,8 +213,4 @@
   color: #f87171;
   font-size: 12px;
   font-style: italic;
-}
-.pill-en-ejecucion {
-  background: rgba(248, 113, 113, 0.14);
-  color: #f87171;
 }
